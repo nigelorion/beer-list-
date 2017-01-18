@@ -1,0 +1,57 @@
+body {
+  background-color: black;
+}
+
+button {
+  padding: 1.5%;
+}
+
+.loading {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+
+}
+
+.main {
+  text-align: center;
+}
+
+.header {
+  margin: 3%;
+}
+
+.editKeg {
+  opacity: 0;
+  transition: all 500ms ease-in-out;
+  color: rgb(217, 106, 86);
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+
+  flex-wrap: wrap;
+  &__item {
+    text-align: center;
+    width: 250px;
+    height: 200px;
+    margin: 3%;
+    color: rgb(200, 204, 201);
+    border: solid 5px rgba(93, 175, 179, 0.29);
+    transition: all 200ms ease-in-out;
+    &:hover {
+      transform: scale(1.1);
+      color: rgba(180, 246, 255, 0.81);
+      border: solid 7px rgba(74, 125, 179, 0.29);
+    }
+    &:hover .editKeg {
+      opacity: 1;
+    }
+  }
+}
+
+ul {
+  list-style: none;
+}
