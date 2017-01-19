@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Keg } from './keg.model';
 
 @Component({
@@ -10,27 +10,18 @@ import { Keg } from './keg.model';
         <p>{{keg.type}}</p>
         <p>{{keg.price}}</p>
         <p>{{keg.content}}</p>
-        <button class="editKeg" (click)="editKeg()">Edit</button>
+        <button type="button" class="editKeg" (click)="editKeg(keg)">Edit</button>
     </div>
   </div>
   `
 })
 
-export class KegList {
+export class KegListComponent {
   @Input() childKegList: Keg[];
+  @Output() clickSender = new EventEmitter;
 
-
-
-//   kegs: Keg[] = [
-//   new Keg('PBR', 'lager', '$3', '5%'),
-//   new Keg('Boneyard', 'IPA', '$5', '7%'),
-//   new Keg('Deschutes Abyss', 'Imperial Stout', '$7', '12.2%'),
-//   new Keg('Deschutes Abyss', 'Imperial Stout', '$7', '12.2%'),
-//   new Keg('Deschutes Abyss', 'Imperial Stout', '$7', '12.2%'),
-//   new Keg('Deschutes Abyss', 'Imperial Stout', '$7', '12.2%'),
-//   new Keg('Deschutes Abyss', 'Imperial Stout', '$7', '12.2%'),
-//   new Keg('Deschutes Abyss', 'Imperial Stout', '$7', '12.2%'),
-//   new Keg('Deschutes Abyss', 'Imperial Stout', '$7', '12.2%')
-// ];
+  editKeg(keg: Keg) {
+    this.clickSender.emit(keg);
+  }
 
 }

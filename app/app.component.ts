@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Keg } from './keg.model';
 
 @Component({
   selector: 'my-app',
@@ -6,33 +7,20 @@ import { Component } from '@angular/core';
   <div class="main">
     <h1 class="header">Current Beers on Tap:</h1>
     <button (click)="newKeg()">Add New Keg</button>
+    <edit-keg [editKegForm]="editKegForm" (clickSender)="editKegSubmit($event)"></edit-keg>
     <form *ngIf="kegForm">
       <label for="name">Name:</label>
-      <input value="name">
+      <input #name>
       <label for="type">Type:</label>
-      <input value="type">
+      <input #type>
       <label for="price">Price:</label>
-      <input value="price">
+      <input #price>
       <label for="content">Percentage:</label>
-      <input value="content">
-      <button (submit)="submitKeg()">Done</button>
+      <input #content>
+      <button type="button" (click)="submitKeg(name.value, type.value, price.value, content.value)">Done</button>
     </form>
-    <keg-list [childKegList]="KegList"></keg-list>
+    <keg-list [childKegList]="kegs" (clickSender)="editKeg($event)"></keg-list>
   </div>
-
-  //////////////////////////////////////////////////////
-  <h1>Add New Keg</h1>
-        <label>Drink Name:</label>
-        <input #name placeholder="name">
-        <label>Brand Name:</label>
-        <input #brand placeholder="brand">
-        <label>Sugar Amount:</label>
-        <input #sugar placeholder="sugar" type="number">
-        <label>Price per Pint:</label>
-        <input #price placeholder="price" type="number">
-        <button (click)="newKeg(name.value, brand.value, sugar.value, price.value)">Add New Drink!</button>
-      </form>
-
   `
 })
 
@@ -44,48 +32,36 @@ export class AppComponent {
   new Keg('Deschutes Abyss', 'Imperial Stout', '$7', '12.2%'),
   new Keg('Deschutes Abyss', 'Imperial Stout', '$7', '12.2%'),
   new Keg('Deschutes Abyss', 'Imperial Stout', '$7', '12.2%'),
-  new Keg('Deschutes Abyss', 'Imperial Stout', '$7', '12.2%'),
-  new Keg('Deschutes Abyss', 'Imperial Stout', '$7', '12.2%'),
-  new Keg('Deschutes Abyss', 'Imperial Stout', '$7', '12.2%'),
   new Keg('Deschutes Abyss', 'Imperial Stout', '$7', '12.2%')
-];
+  ];
 
-kegForm = null;
+  kegForm = null;
 
-newKeg() {
-  if (this.kegForm === null) {
-    this.kegForm = true;
-  } else {
-    this.kegForm = null;
+  editKegForm = null;
+
+  newKeg() {
+    if (this.kegForm === null) {
+      this.kegForm = true;
+    } else {
+      this.kegForm = null;
+    }
   }
-}
 
-newKeg(name, brand, sugar, price) {
-   this.kegs.push(new Keg(name, brand, sugar, price));
- }
+  submitKeg(name, type, price, content) {
+    console.log(name);
+     this.kegs.push(new Keg(name, type, price, content));
+     this.kegForm = null;
+   }
 
-// submitKeg() {
-//   kegData = [];
-// }
+  editKeg(Keg) {
+    console.log(Keg);
+    this.editKegForm = Keg;
+  }
 
-  // editKeg() {
-  //
-  // }
-  //
-  // newkeg() {
-  //
-  //   kegs.push(new Keg('stella', 'lager', '$5', '5.5%'));
-  //
-  // }
+  editKegSubmit(Keg) {
 
-}
+    this.editKegForm = null;
 
-export class Keg {
-  public done: boolean = false;
-  constructor(
-    public name: string,
-    public type: string,
-    public price: string,
-    public content: string)
-    { }
+  }
+
 }
