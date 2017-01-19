@@ -4,7 +4,7 @@ import { Keg } from './keg.model';
 @Component({
   selector: 'new-keg',
   template: `
-  <form *ngIf="kegForm">
+  <form>
     <label for="name">Name:</label>
     <input #name>
     <label for="type">Type:</label>
