@@ -19,6 +19,20 @@ import { Component } from '@angular/core';
     </form>
     <keg-list [childKegList]="KegList"></keg-list>
   </div>
+
+  //////////////////////////////////////////////////////
+  <h1>Add New Keg</h1>
+        <label>Drink Name:</label>
+        <input #name placeholder="name">
+        <label>Brand Name:</label>
+        <input #brand placeholder="brand">
+        <label>Sugar Amount:</label>
+        <input #sugar placeholder="sugar" type="number">
+        <label>Price per Pint:</label>
+        <input #price placeholder="price" type="number">
+        <button (click)="newKeg(name.value, brand.value, sugar.value, price.value)">Add New Drink!</button>
+      </form>
+
   `
 })
 
@@ -45,6 +59,10 @@ newKeg() {
     this.kegForm = null;
   }
 }
+
+newKeg(name, brand, sugar, price) {
+   this.kegs.push(new Keg(name, brand, sugar, price));
+ }
 
 // submitKeg() {
 //   kegData = [];
