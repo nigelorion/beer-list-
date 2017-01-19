@@ -44,7 +44,6 @@ export class AppComponent {
    }
 
   editKeg(Keg) {
-    console.log(Keg);
     this.editKegForm = Keg;
   }
 
@@ -55,8 +54,7 @@ export class AppComponent {
   }
 
   soldPint(keg) {
-    console.log(keg);
-    keg =- 1;
+    keg.pints -= 1;
   }
 
 }

@@ -1,6 +1,6 @@
 
 export class Keg {
-  public done: boolean = false;
+  public pints: number = 124;
   constructor(
     public name: string,
     public type: string,
