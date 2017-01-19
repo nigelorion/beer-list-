@@ -17,20 +17,13 @@ import { Component } from '@angular/core';
       <input value="content">
       <button (submit)="submitKeg()">Done</button>
     </form>
-    <div class="list">
-      <div class='list__item' *ngFor="let keg of kegs">
-          <h3>{{keg.name}}</h3>
-          <p>{{keg.type}}</p>
-          <p>{{keg.price}}</p>
-          <p>{{keg.content}}</p>
-          <button class="editKeg" (click)="editKeg()">Edit</button>
-      </div>
-    </div>
+    <keg-list [childKegList]="KegList"></keg-list>
   </div>
   `
 })
 
 export class AppComponent {
+
   kegs: Keg[] = [
   new Keg('PBR', 'lager', '$3', '5%'),
   new Keg('Boneyard', 'IPA', '$5', '7%'),
@@ -42,8 +35,6 @@ export class AppComponent {
   new Keg('Deschutes Abyss', 'Imperial Stout', '$7', '12.2%'),
   new Keg('Deschutes Abyss', 'Imperial Stout', '$7', '12.2%')
 ];
-
-
 
 kegForm = null;
 
