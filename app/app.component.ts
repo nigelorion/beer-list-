@@ -8,18 +8,8 @@ import { Keg } from './keg.model';
     <h1 class="header">Current Beers on Tap:</h1>
     <button (click)="newKeg()">Add New Keg</button>
     <edit-keg [editKegForm]="editKegForm" (clickSender)="editKegSubmit($event)"></edit-keg>
-    <form *ngIf="kegForm">
-      <label for="name">Name:</label>
-      <input #name>
-      <label for="type">Type:</label>
-      <input #type>
-      <label for="price">Price:</label>
-      <input #price>
-      <label for="content">Percentage:</label>
-      <input #content>
-      <button type="button" (click)="submitKeg(name.value, type.value, price.value, content.value)">Done</button>
-    </form>
-    <keg-list [childKegList]="kegs" (clickSender)="editKeg($event)"></keg-list>
+    <new-keg  *ngIf="kegForm" (newKegSender)="submitKeg($event)"></new-keg>
+    <keg-list [childKegList]="kegs" (clickSender)="editKeg($event)" (soldSender)="soldPint($event)"></keg-list>
   </div>
   `
 })
@@ -47,9 +37,9 @@ export class AppComponent {
     }
   }
 
-  submitKeg(name, type, price, content) {
-    console.log(name);
-     this.kegs.push(new Keg(name, type, price, content));
+  submitKeg(newKeg: Keg) {
+    console.log(newKeg);
+     this.kegs.push(newKeg);
      this.kegForm = null;
    }
 
@@ -62,6 +52,11 @@ export class AppComponent {
 
     this.editKegForm = null;
 
+  }
+
+  soldPint(keg) {
+    console.log(keg);
+    keg =- 1;
   }
 
 }

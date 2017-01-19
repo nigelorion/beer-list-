@@ -11,6 +11,7 @@ import { Keg } from './keg.model';
         <p>{{keg.price}}</p>
         <p>{{keg.content}}</p>
         <button type="button" class="editKeg" (click)="editKeg(keg)">Edit</button>
+        <button type="button" (click)="soldPint(keg)">Sold Pint</button>
     </div>
   </div>
   `
@@ -23,5 +24,9 @@ export class KegListComponent {
   editKeg(keg: Keg) {
     this.clickSender.emit(keg);
   }
+
+  // soldPint(soldPint: Keg) {
+  //   this.soldSender.emit(soldPint);
+  // }
 
 }
