@@ -6,7 +6,7 @@ import { Keg } from './keg.model';
   template: `
   <div class="main">
     <h1 class="header">Current Beers on Tap:</h1>
-    <button (click)="newKeg()">Add New Keg</button>
+    <button (click)="newKeg()" class="new_keg">Add New Keg</button>
     <edit-keg [editKegForm]="editKegForm" (clickSender)="editKegSubmit($event)"></edit-keg>
     <new-keg  *ngIf="kegForm" (newKegSender)="submitKeg($event)"></new-keg>
     <keg-list [childKegList]="kegs" (clickSender)="editKeg($event)" (soldSender)="soldPint($event)"></keg-list>

@@ -1,11 +1,23 @@
 @import 'mixins';
+@import url('https://fonts.googleapis.com/css?family=Arvo');
 
 body {
-  background-color: black;
+  background-color: blackrgb(190, 190, 190);
+  text-align: center;
+  font-family: 'Arvo', serif;
+  background-image: url(/resources/hood.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: grayscale(50%);
 }
 
 button {
   padding: 1.5%;
+  background-color: white;
+  font-size: 1.5em;
+  border: none;
+
 }
 
 .loading {
@@ -17,6 +29,11 @@ button {
 
 .main {
   text-align: center;
+  font-family: 'Arvo', serif;
+  // background-image: url("http://seniorcitizen.travel/wp-content/uploads/2015/10/img_2312.jpg");
+  // background-position: center;
+  // background-repeat: no-repeat;
+  // background-size: cover;
 }
 
 .header {
@@ -27,6 +44,23 @@ button {
   opacity: 0;
   transition: all 500ms ease-in-out;
   color: rgb(217, 106, 86);
+  width: 100%;
+  margin: 0 auto;
+  &:hover {
+    color: rgb(170, 52, 61);
+    background-color: rgb(189, 189, 189);
+  }
+}
+
+.sold {
+  opacity: 0;
+  transition: all 300ms ease-in-out;
+  width: 100%;
+  margin: 0 auto;
+  &:hover {
+    color: rgb(78, 139, 249);
+    background-color: rgba(179, 173, 123, 0.53);
+  }
 }
 
 .list {
@@ -35,20 +69,32 @@ button {
   // align-items: center;
 
   flex-wrap: wrap;
+  & p {
+    font-size: 1.6em;
+  }
   &__item {
     text-align: center;
-    width: 250px;
-    height: 200px;
+    width: 320px;
+    height: 320px;
     margin: 3%;
-    color: rgb(200, 204, 201);
+    color: rgb(0, 0, 0);
     border: solid 5px rgba(93, 175, 179, 0.29);
     transition: all 200ms ease-in-out;
+    display: flex;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+
+    flex-direction: column;
     &:hover {
       transform: scale(1.1);
-      color: rgba(180, 246, 255, 0.81);
+      color: white;
       border: solid 7px rgba(74, 125, 179, 0.29);
+      background-color: rgba(83, 122, 184, 0.48)
     }
     &:hover .editKeg {
+      opacity: 1;
+    }
+    &:hover .sold {
       opacity: 1;
     }
   }
@@ -56,4 +102,27 @@ button {
 
 ul {
   list-style: none;
+}
+
+.new_keg:hover {
+  background-color: rgba(154, 154, 154, 0.48);
+  color: rgb(111, 111, 111);
+}
+
+// .left, .right {
+//   flex: 1;
+//
+//
+// }
+.left {
+  flex-basis: 60%;
+}
+
+form {
+  margin: 3% auto;
+}
+
+select {
+  margin: 3%;
+  font-size: 1.5em;
 }

@@ -10,13 +10,18 @@ import { Keg } from './keg.model';
   </select>
   <div class="list">
     <div class='list__item' *ngFor="let keg of childKegList | fullness:filterByFullness">
+    <div class="left">
         <h3>{{keg.name}}</h3>
         <p>{{keg.type}}</p>
         <p>{{keg.price}}</p>
         <p>{{keg.content}}</p>
+
+        <p>Pints left: {{keg.pints}}</p>
+        </div>
+        <div class="right">
+        <button type="button" name="pint" class="sold"(click)="soldPint(keg)">Sell Pint</button>
         <button type="button" class="editKeg" (click)="editKeg(keg)">Edit</button>
-        <label for="pint">{{keg.pints}}</label>
-        <button type="button" name="pint" (click)="soldPint(keg)">Sell Pint</button>
+        </div>
     </div>
   </div>
   `
